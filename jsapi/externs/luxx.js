@@ -4,6 +4,593 @@
 var luxx;
 
 /**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintSpec;
+
+
+/**
+ * @type {luxx.MapFishPrintAttributes}
+ */
+luxx.MapFishPrintSpec.prototype.attributes;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSpec.prototype.layout;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSpec.prototype.format;
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintAttributes;
+
+
+/**
+ * @type {luxx.MapFishPrintMap}
+ */
+luxx.MapFishPrintAttributes.prototype.map;
+
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintMap;
+
+
+/**
+ * @type {Array.<number>}
+ */
+luxx.MapFishPrintMap.prototype.bbox;
+
+
+/**
+ * @type {Array.<number>}
+ */
+luxx.MapFishPrintMap.prototype.center;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintMap.prototype.scale;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintMap.prototype.dpi;
+
+
+/**
+ * @type {Array.<luxx.MapFishPrintLayer>}
+ */
+luxx.MapFishPrintMap.prototype.layers;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintMap.prototype.projection;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintMap.prototype.rotation;
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintLayer;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintLayer.prototype.type;
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintLayer.prototype.opacity;
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintLayer}
+ */
+luxx.MapFishPrintVectorLayer;
+
+/**
+ * @type {GeoJSONObject}
+ */
+luxx.MapFishPrintVectorLayer.prototype.geoJson;
+
+/**
+ * @type {luxx.MapFishPrintVectorStyle}
+ */
+luxx.MapFishPrintVectorLayer.prototype.style;
+
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintVectorStyle;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintVectorStyle.prototype.version;
+
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintLayer}
+ */
+luxx.MapFishPrintWmsLayer;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmsLayer.prototype.baseURL;
+
+
+/**
+ * @type {Object.<string, string>}
+ */
+luxx.MapFishPrintWmsLayer.prototype.customParams;
+
+
+/**
+ * @type {Array.<string>}
+ */
+luxx.MapFishPrintWmsLayer.prototype.layers;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmsLayer.prototype.serverType;
+
+
+/**
+ * @type {Array.<string>}
+ */
+luxx.MapFishPrintWmsLayer.prototype.styles;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmsLayer.prototype.version;
+
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintWmtsMatrix;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsMatrix.prototype.identifier;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintWmtsMatrix.prototype.scaleDenominator;
+
+
+/**
+ * @type {Array.<number>}
+ */
+luxx.MapFishPrintWmtsMatrix.prototype.tileSize;
+
+
+/**
+ * @type {Array.<number>}
+ */
+luxx.MapFishPrintWmtsMatrix.prototype.topLeftCorner;
+
+
+/**
+ * @type {Array.<number>}
+ */
+luxx.MapFishPrintWmtsMatrix.prototype.matrixSize;
+
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintLayer}
+ */
+luxx.MapFishPrintWmtsLayer;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.baseURL;
+
+
+/**
+ * @type {Object}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.dimensions;
+
+
+/**
+ * @type {Object}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.dimensionParams;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.imageFormat;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.layer;
+
+
+/**
+ * @type {Array.<luxx.MapFishPrintWmtsMatrix>}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.matrices;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.matrixSet;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.requestEncoding;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.style;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintWmtsLayer.prototype.version;
+
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintReportResponse;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintReportResponse.prototype.ref;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintReportResponse.prototype.statusURL;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintReportResponse.prototype.downloadURL;
+
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintStatusResponse;
+
+
+/**
+ * @type {boolean}
+ */
+luxx.MapFishPrintStatusResponse.prototype.done;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintStatusResponse.prototype.status;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintStatusResponse.prototype.error;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintStatusResponse.prototype.downloadURL;
+
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintSymbolizers;
+
+
+/**
+ * @type {Array.<luxx.MapFishPrintSymbolizer>}
+ */
+luxx.MapFishPrintSymbolizers.prototype.symbolizers;
+
+
+/**
+ * @typedef {Object}
+ */
+luxx.MapFishPrintSymbolizer;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizer.prototype.type;
+
+
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintSymbolizer}
+ */
+luxx.MapFishPrintSymbolizerLine;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerLine.prototype.strokeColor;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerLine.prototype.strokeOpacity;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerLine.prototype.strokeWidth;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerLine.prototype.strokeDashstyle;
+
+
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintSymbolizer}
+ */
+luxx.MapFishPrintSymbolizerPoint;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.externalGraphic;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.graphicFormat;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.graphicOpacity;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.graphicHeight;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.graphicWidth;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.fillColor;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.fillOpacity;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.pointRadius;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.rotation;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.strokeColor;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.strokeOpacity;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.strokeWidth;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPoint.prototype.graphicName;
+
+
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintSymbolizer}
+ */
+luxx.MapFishPrintSymbolizerPolygon;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPolygon.prototype.fillColor;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPolygon.prototype.fillOpacity;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPolygon.prototype.strokeColor;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPolygon.prototype.strokeOpacity;
+
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerPolygon.prototype.strokeWidth;
+
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerPolygon.prototype.strokeDashstyle;
+
+
+
+/**
+ * @typedef {Object}
+ * @extends {luxx.MapFishPrintSymbolizer}
+ */
+luxx.MapFishPrintSymbolizerText;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.label;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.labelAlign;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.labelRotation;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.fontWeight;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.fontSize;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.fontFamily;
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.labelXOffset;
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.labelYOffset;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.haloColor;
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.haloOpacity;
+
+/**
+ * @type {number}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.haloRadius;
+
+/**
+ * @type {string}
+ */
+luxx.MapFishPrintSymbolizerText.prototype.fontColor;
+
+
+/**
  * Object literal with config options for the map.
  * @typedef {Object}
  */
